@@ -7,19 +7,22 @@ import (
 )
 
 var (
-	videoService    service.UserService       = service.New()
-	videoController controller.UserController = controller.New(videoService)
+	userService    service.UserService       = service.New()
+	userController controller.UserController = controller.New(userService)
 )
 
 func main() {
+	// Initialize config
+	// conf := config.NewConfig()
+
 	server := gin.Default()
 
 	server.GET("/users", func(ctxhttp *gin.Context) {
-		ctxhttp.JSON(200, videoController.FindAll())
+		ctxhttp.JSON(200, userController.FindAll())
 	})
 
 	server.POST("/users", func(ctxhttp *gin.Context) {
-		ctxhttp.JSON(200, videoController.Save(ctxhttp))
+		ctxhttp.JSON(200, userController.Save(ctxhttp))
 	})
 
 	server.Run(":8080")

@@ -16,13 +16,15 @@ type controller struct {
 }
 
 func New(service service.UserService) UserController {
-	return &controller{
-		service: service,
-	}
+	// return &controller{
+	// 	service: service,
+	// }
 }
 
-func (c *controller) FindAll() []entity.User {
-	return c.service.FindAll()
+func (c *controller) FindAll() string {
+	return "Get call"
+	// return c.service.FindAll()
+
 }
 func (c *controller) Save(ctxhttp *gin.Context) entity.User {
 	var user entity.User
